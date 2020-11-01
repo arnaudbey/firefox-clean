@@ -1,4 +1,6 @@
 HISTORYFILES=~/.mozilla/firefox/*/places.sqlite
+
+echo "SUPPRESSION ENTREES HISTORIQUE."
 while [ $# -gt 0 ]
 do
 	KEYWORD=$1
@@ -10,12 +12,12 @@ do
 	done
 	shift
 done
+echo "SUPPRESSION ENTREES HISTORIQUE OK."
 
-echo "OPTI SQLITE"
+echo "\nOPTI SQLITE"
 ALLFILES=~/.mozilla/firefox/*/*.sqlite
 for f in $ALLFILES
 do
-	echo "..."
 	sqlite3 $f 'VACUUM;'
 done
-echo "done."
+echo "OPTI SQLITE OK."
